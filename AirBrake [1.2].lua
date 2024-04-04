@@ -4,7 +4,7 @@ script_author('cloused2')
 script_version('1.2')
 script_description('Added mimgui window and new settings for cheat')
 
----=== Библиотеки ===---
+---=== ГЃГЁГЎГ«ГЁГ®ГІГҐГЄГЁ ===---
 
 require 'moonloader'
 local requests = require 'requests'
@@ -17,7 +17,7 @@ local u8 = encoding.UTF8
 
 IniFilename = 'AirBrakeSettings.ini'
 
------===== Переменные =====----
+-----===== ГЏГҐГ°ГҐГ¬ГҐГ­Г­Г»ГҐ =====----
 
 local MOP = false
 local zfix = nil
@@ -25,7 +25,7 @@ local scroll = 0
 
 local version = 1.2
 
-url = requests.get("https://raw.githubusercontent.com/cloused2/beta-scripts-lua/main/updater_airbrake-s0beit.json") -- Отправляем GET запрос к нашей таблице
+url = requests.get("https://raw.githubusercontent.com/cloused2/beta-scripts-lua/main/updater_airbrake-s0beit.json") -- ГЋГІГЇГ°Г ГўГ«ГїГҐГ¬ GET Г§Г ГЇГ°Г®Г± ГЄ Г­Г ГёГҐГ© ГІГ ГЎГ«ГЁГ¶ГҐ
 
 a = decodeJson(url.text)
 
@@ -33,7 +33,7 @@ local new = imgui.new
 local str = ffi.string
 local renderWindow = new.bool(false)
 
------===== Настройки =====----
+-----===== ГЌГ Г±ГІГ°Г®Г©ГЄГЁ =====----
 local settings = inicfg.load({
 	main = {
 		ClickSpeedOnFoot = 0.0100,
@@ -72,43 +72,43 @@ local newFrame = imgui.OnFrame(
         local sizeX, sizeY = 600, 300
         imgui.SetNextWindowPos(imgui.ImVec2(resX / 2, resY / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.5, 0.5))
         imgui.SetNextWindowSize(imgui.ImVec2(sizeX, sizeY), imgui.Cond.FirstUseEver)
-        imgui.Begin(u8'Настройки AirBrake | Version: ' .. version, renderWindow, imgui.WindowFlags.NoResize)
-			imgui.Text(u8'Настройки AirBrake')
+        imgui.Begin(u8'ГЌГ Г±ГІГ°Г®Г©ГЄГЁ AirBrake | Version: ' .. version, renderWindow, imgui.WindowFlags.NoResize)
+			imgui.Text(u8'ГЌГ Г±ГІГ°Г®Г©ГЄГЁ AirBrake')
 			imgui.Separator()
-				if imgui.Checkbox(u8'Включить', AirWork) then
+				if imgui.Checkbox(u8'Г‚ГЄГ«ГѕГ·ГЁГІГј', AirWork) then
 					settings.main.enabled = AirWork[0] 
 					inicfg.save(settings, IniFilename)
 				end
 				imgui.SameLine()
-				if imgui.Checkbox(u8'Переключение скорости колесиком мышки', ScrollWork) then
+				if imgui.Checkbox(u8'ГЏГҐГ°ГҐГЄГ«ГѕГ·ГҐГ­ГЁГҐ Г±ГЄГ®Г°Г®Г±ГІГЁ ГЄГ®Г«ГҐГ±ГЁГЄГ®Г¬ Г¬Г»ГёГЄГЁ', ScrollWork) then
 					settings.main.scroll = ScrollWork[0]
 					inicfg.save(settings, IniFilename)
 				end
-				if imgui.Checkbox(u8'Переключение скорости кнопками мышки', MouseWork) then
+				if imgui.Checkbox(u8'ГЏГҐГ°ГҐГЄГ«ГѕГ·ГҐГ­ГЁГҐ Г±ГЄГ®Г°Г®Г±ГІГЁ ГЄГ­Г®ГЇГЄГ Г¬ГЁ Г¬Г»ГёГЄГЁ', MouseWork) then
 					settings.main.mouse = MouseWork[0]
 					inicfg.save(settings, IniFilename)
 				end
 			imgui.Separator()
-			imgui.Text(u8'Настройки переключения скорости')
-			if imgui.SliderFloat(u8'Смена скорости OnFoot', speedClickFoot, 0, 0.0500) then
+			imgui.Text(u8'ГЌГ Г±ГІГ°Г®Г©ГЄГЁ ГЇГҐГ°ГҐГЄГ«ГѕГ·ГҐГ­ГЁГї Г±ГЄГ®Г°Г®Г±ГІГЁ')
+			if imgui.SliderFloat(u8'Г‘Г¬ГҐГ­Г  Г±ГЄГ®Г°Г®Г±ГІГЁ OnFoot', speedClickFoot, 0, 0.0500) then
 				settings.main.ClickSpeedOnFoot = speedClickFoot[0]
 				inicfg.save(settings, IniFilename)
 			end
-			if imgui.SliderFloat(u8'Смена скорости Veh', speedClickVeh, 0, 0.0500) then
+			if imgui.SliderFloat(u8'Г‘Г¬ГҐГ­Г  Г±ГЄГ®Г°Г®Г±ГІГЁ Veh', speedClickVeh, 0, 0.0500) then
 				settings.main.ClickSpeedOnVeh = speedClickVeh[0]
 				inicfg.save(settings, IniFilename)
 			end
 			imgui.Separator()
-			imgui.Text(u8'Настройки скорости')
-			if imgui.SliderFloat(u8'Начальная скорость onFoot', speedFoot, 0, 25) then
+			imgui.Text(u8'ГЌГ Г±ГІГ°Г®Г©ГЄГЁ Г±ГЄГ®Г°Г®Г±ГІГЁ')
+			if imgui.SliderFloat(u8'ГЌГ Г·Г Г«ГјГ­Г Гї Г±ГЄГ®Г°Г®Г±ГІГј onFoot', speedFoot, 0, 25) then
 				settings.main.SpeedFoot = speedFoot[0]
 				inicfg.save(settings, IniFilename)
 			end
-			if imgui.SliderFloat(u8'Начальная скорость onVeh', speedCar, 0, 25) then
+			if imgui.SliderFloat(u8'ГЌГ Г·Г Г«ГјГ­Г Гї Г±ГЄГ®Г°Г®Г±ГІГј onVeh', speedCar, 0, 25) then
 				settings.main.SpeedCar = speedCar[0]
 				inicfg.save(settings, IniFilename)
 			end
-			imgui.TextWrapped(u8'Переключение скорости: ЛКМ - прибавить  |  ПКМ - убавить  |  Колесико мышки ')
+			imgui.TextWrapped(u8'ГЏГҐГ°ГҐГЄГ«ГѕГ·ГҐГ­ГЁГҐ Г±ГЄГ®Г°Г®Г±ГІГЁ: Г‹ГЉГЊ - ГЇГ°ГЁГЎГ ГўГЁГІГј  |  ГЏГЉГЊ - ГіГЎГ ГўГЁГІГј  |  ГЉГ®Г«ГҐГ±ГЁГЄГ® Г¬Г»ГёГЄГЁ ')
         imgui.End()
     end)
 
@@ -134,7 +134,7 @@ function main()
 	while not isSampAvailable() do wait(0) end
 
 	if tonumber(a["update"]) > version then
-        sampShowDialog(1234, "Обновление "..a["update"], "Обнаружено обновление "..a["update"].."!\nПерейдите в тему со скриптом на blast.hk\n\n"..u8:decode(a["news"]), "Понял")
+        sampShowDialog(1234, "ГЋГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ "..a["update"], "ГЋГЎГ­Г Г°ГіГ¦ГҐГ­Г® Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ "..a["update"].."!\nГЏГҐГ°ГҐГ©Г¤ГЁГІГҐ Гў ГІГҐГ¬Гі Г±Г® Г±ГЄГ°ГЁГЇГІГ®Г¬ Г­Г  blast.hk\n\n"..u8:decode(a["news"]), "ГЏГ®Г­ГїГ«")
     end
 
 	sampRegisterChatCommand('airb', function ()
@@ -383,7 +383,7 @@ if AirWork[0] then
 end
 end
 
----=== Темная Тема Mimgui ===---
+---=== Г’ГҐГ¬Г­Г Гї Г’ГҐГ¬Г  Mimgui ===---
 
 function imgui.DarkTheme()
     imgui.SwitchContext()
