@@ -1,4 +1,6 @@
 {
     "update" : 1.3,
-    "news" : "Добавление изменения скорости на колесико мышки (Настраиваемое), небольшие поправки внутри кода"
+		 "latest": "1.3",
+    "news" : "Добавление изменения скорости на колесико мышки (Настраиваемое), небольшие поправки внутри кода",
+  "updateurl": "https://raw.githubusercontent.com/qrlk/moonloader-script-updater/master/minified-example.lua"
 }
