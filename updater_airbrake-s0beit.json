@@ -1,5 +1,5 @@
 {
-	"update" : 1.4,
-	"news" : "Добавлены Mimgui Hotkeys, оптимизация кода.",
+	"update" : 1.5,
+	"news" : "Bug fix",
 	"updateurl": "https://raw.githubusercontent.com/qrlk/moonloader-script-updater/master/minified-example.lua"
 }
